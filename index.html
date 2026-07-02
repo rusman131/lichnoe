@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Свадебное приглашение</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE7D9;
+    --sage: #7A8C6E;
+    --sage-dark: #5C6B4F;
+    --brown: #4A3728;
+    --olive: #8B8A4E;
+    --warm-gray: #9E9589;
+    --text: #2E2A25;
+  }
+
+  body {
+    background: #C9C4BC;
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+    min-height: 100vh;
+  }
+
+  .page-label {
+    position: fixed;
+    top: 20px;
+    left: 28px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.7;
+    font-weight: 300;
+  }
+  .page-label-right {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.7;
+    font-weight: 300;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  /* ── CARD BASE ── */
+  .card {
+    background: var(--cream);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ══════════════════════════════
+     CARD 1 — Hero
+  ══════════════════════════════ */
+  .card-hero {
+    padding: 32px 28px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heart-wire {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .heart-wire svg {
+    width: 180px;
+    height: 40px;
+  }
+
+  .hero-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--warm-gray);
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .handwritten-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--warm-gray);
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    padding: 0 10px;
+  }
+
+  .photo-strip {
+    width: calc(80% + 76px);
+    margin-left: 0px;
+    height: 230px;
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-strip-inner {
+    display: flex;
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+  }
+  .photo-slot {
+    flex: 1;
+    background: linear-gradient(135deg, #D6CEBC 0%, #C4BAA6 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 8px;
+  }
+  .photo-slot span {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+  }
+  .photo-slot::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    border-radius: 30px 30px 0 0;
+    opacity: 0.12;
+  }
+  .photo-slot:nth-child(1) { background: linear-gradient(160deg, #D4CABC 0%, #BEB3A2 100%); }
+  .photo-slot:nth-child(2) { background: linear-gradient(160deg, #CABFAF 0%, #B9AE9D 100%); }
+  .photo-slot:nth-child(3) { background: linear-gradient(160deg, #C8BDA9 0%, #B5AA98 100%); }
+
+  .you-are-invited {
+    display: flex;
+    justify-content: space-around;
+    width: calc(100% + 56px);
+    margin-left: -28px;
+    padding: 8px 0;
+    background: var(--cream);
+  }
+  .you-are-invited span {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* ══════════════════════════════
+     CARD 2 — Date / Letter
+  ══════════════════════════════ */
+  .card-date {
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .wedding-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--sage-dark);
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  .calendar {
+    background: var(--cream-dark);
+    border-radius: 2px;
+    padding: 16px;
+  }
+  .cal-month {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    text-align: center;
+  }
+  .cal-grid .day-name {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    font-weight: 400;
+  }
+  .cal-grid .day {
+    font-size: 11px;
+    color: var(--text);
+    padding: 3px 0;
+    font-weight: 300;
+  }
+  .cal-grid .day.empty { color: transparent; }
+  .cal-grid .day.highlight {
+    background: var(--sage);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 500;
+  }
+  .cal-grid .day.muted { color: #C0B9AF; }
+
+  .save-the-date-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    text-align: right;
+    color: var(--warm-gray);
+  }
+
+  /* ══════════════════════════════
+     CARD 3 — Schedule
+  ══════════════════════════════ */
+  .card-schedule {
+    background: var(--cream);
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .schedule-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    flex: 1;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 44px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--sage);
+    opacity: 0.35;
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 44px 20px 1fr;
+    align-items: start;
+    gap: 0 12px;
+    padding: 10px 0;
+  }
+  .tl-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--text);
+    text-align: right;
+    line-height: 1;
+  }
+  .tl-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sage);
+    margin-top: 8px;
+    justify-self: center;
+  }
+  .tl-dot.heart-dot {
+    background: none;
+    width: 14px;
+    height: 14px;
+    margin-top: 5px;
+  }
+  .tl-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    padding-top: 6px;
+    font-weight: 300;
+  }
+  .tl-sublabel {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--warm-gray);
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* green block */
+  .green-block {
+    background: var(--sage);
+    margin: 0 -28px;
+    padding: 24px 28px;
+    margin-top: 24px;
+  }
+  .green-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--cream);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .green-block-sub {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    font-weight: 300;
+  }
+
+  /* ══════════════════════════════
+     CARD 4 — Dress code + Wishes
+  ══════════════════════════════ */
+  .card-dresscode {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dresscode-top {
+    padding: 30px 28px 20px;
+  }
+  .dresscode-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .dresscode-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .dresscode-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .palette {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .palette-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--warm-gray);
+    opacity: 0.7;
+  }
+
+  .mood-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin: 0 0 0 0;
+    height: 130px;
+  }
+  .mood-photo {
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .mood-photo:nth-child(1) { background: linear-gradient(135deg, #C4BBA9, #B0A690); }
+  .mood-photo:nth-child(2) { background: linear-gradient(135deg, #8A8060, #6B6347); }
+
+  .wishes-section {
+    padding: 22px 28px;
+  }
+  .wishes-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .wishes-text {
+    font-size: 11px;
+    line-height: 1.65;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .wine-bottle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .wine-bottle svg {
+    opacity: 0.4;
+  }
+
+  /* ══════════════════════════════
+     CARD 5 — Location (full width)
+  ══════════════════════════════ */
+  .card-location {
+    grid-column: span 2;
+    background: var(--sage-dark);
+    padding: 32px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .location-left {}
+  .location-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .location-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .location-address {
+    font-size: 12px;
+    color: rgba(245,240,232,0.65);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .location-right {
+    text-align: right;
+  }
+  .location-cta {
+    display: inline-block;
+    border: 1px solid rgba(245,240,232,0.4);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    font-weight: 300;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .location-cta:hover { background: rgba(245,240,232,0.1); }
+
+  /* ══════════════════════════════
+     SVG decorations
+  ══════════════════════════════ */
+  .squiggle {
+    width: 100%;
+    overflow: visible;
+  }
+
+  @media (max-width: 580px) {
+    .wrapper { grid-template-columns: 1fr; }
+    .card-location { grid-column: span 1; flex-direction: column; text-align: center; }
+    .location-right { text-align: center; }
+    .hero-title { font-size: 36px; }
+    .page-label, .page-label-right { display: none; }
+  }
+
+  /* VIDEO INTRO */
+  #video-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 1s ease;
+  }
+  #video-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #skip-hint {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.55);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  /* PLAY BUTTON OVERLAY */
+  #play-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(20,16,12,0.55);
+    cursor: pointer;
+  }
+  #play-overlay.hidden { display: none; }
+  .play-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,240,232,0.45);
+    background: rgba(245,240,232,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+  #play-overlay:hover .play-circle {
+    background: rgba(245,240,232,0.2);
+    transform: scale(1.06);
+  }
+  .play-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== НОВЫЙ АУДИОБЛОК ==================== -->
+<audio id="bg-music" loop>
+  <!-- Используем внешний MP3 (тестовый трек) – он всегда доступен -->
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+<!-- ======================================================== -->
+
+<!-- Видео‑интро (оставляем как есть) -->
+<div id="video-screen">
+  <video id="intro-video" muted playsinline>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+  <div id="play-overlay">
+    <div class="play-circle">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <polygon points="5,3 19,12 5,21" />
+      </svg>
+    </div>
+    <span class="play-label">Смотреть</span>
+  </div>
+  <div id="skip-hint">Нажмите, чтобы пропустить</div>
+</div>
+
+<div class="page-label">Приглашение</div>
+<div class="page-label-right">#LoveStory</div>
+
+<div class="wrapper">
+  <!-- Остальная вёрстка остаётся без изменений -->
+  <!-- (ваши карточки 1–5) -->
+  <!-- ... -->
+</div>
+
+<script>
+  // ========== УПРАВЛЕНИЕ МУЗЫКОЙ ==========
+  var audio = document.getElementById('bg-music');
+
+  // Запускаем музыку после любого клика по странице (обходит блокировку)
+  document.addEventListener('click', function initAudio() {
+    audio.play().catch(function(e) {
+      console.log('Автовоспроизведение заблокировано:', e);
+    });
+    // убираем обработчик, чтобы не запускать повторно
+    document.removeEventListener('click', initAudio);
+  });
+
+  // ========== ВИДЕО-ИНТРО (оставляем без изменений) ==========
+  var video = document.getElementById('intro-video');
+  var overlay = document.getElementById('play-overlay');
+  var screen = document.getElementById('video-screen');
+
+  overlay.addEventListener('click', function() {
+    video.play();
+    overlay.classList.add('hidden');
+  });
+
+  video.addEventListener('ended', function() {
+    screen.classList.add('fade-out');
+    // после окончания видео пробуем запустить музыку (если ещё не запущена)
+    audio.play().catch(function(e) {});
+  });
+
+  // Пропуск по клику на фоне (кроме кнопки)
+  screen.addEventListener('click', function(e) {
+    if (e.target === screen || e.target === video) {
+      screen.classList.add('fade-out');
+      video.pause();
+      audio.play().catch(function(e) {});
+    }
+  });
+
+  // Запасной пропуск по таймеру (через 8 секунд)
+  setTimeout(function() {
+    if (!screen.classList.contains('fade-out')) {
+      screen.classList.add('fade-out');
+      video.pause();
+      audio.play().catch(function(e) {});
+    }
+  }, 8000);
+</script>
+
+</body>
+</html>
